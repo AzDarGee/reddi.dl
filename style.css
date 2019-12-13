@@ -3,8 +3,9 @@ html, body {
 	margin: 0;
 	top: 0;
 	left: 0;
-
+	scroll-behavior: smooth;
 }
+
 .reddit-img {
 	width: 100%;
 	top: 0;
@@ -22,7 +23,23 @@ html, body {
 	opacity: 0.5;
 	background: transparent;
     border: none;
+    outline: none;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  
+  -webkit-text-fill-color: black;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 #subredditInnerDiv {
 	margin: 1vw;
 	text-align: center;
@@ -31,3 +48,124 @@ p.title {
 	top: -40px;
 	position: relative;
 }
+.loading {
+	text-align: center;
+	display: none;
+	position: relative;
+	float: left;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.loader {
+	border: 10px solid #f3f3f3; /* Light grey */
+	border-top: 10px solid #3498db; /* Blue */
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	animation: spin 2s linear infinite;
+	display: inline-block;
+
+
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.pageTop {
+	text-align: center;
+    width: 100%;
+    text-decoration: none;
+    font-size: 2em;
+    position: fixed;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    color: whitesmoke;
+}
+
+
+
+/* Sticky header / input*/
+
+.trigger-menu-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+	z-index: 2;
+	background: var(--lightpurple);
+	transition: transform 0.4s;
+}
+ 
+.page-header .trigger-menu {
+	display: flex;
+	align-items: center;
+	font-size: 1.5rem;
+	color: var(--white);
+	width: 100%;
+	opacity: 0.8;
+}
+ 
+.page-header .menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: none;
+	text-align: center;
+	padding: 15vh 0 5vh;
+	overflow: auto;
+	z-index: 1;
+}
+ 
+.page-header .menu a {
+	font-size: 3rem;
+}
+ 
+.page-header .sub-menu a {
+	font-size: 1.5rem;
+}
+
+.trigger-menu-wrapper {
+	transition: transform 0.4s;
+}
+ 
+.scroll-down .trigger-menu-wrapper {
+	transform: translate3d(0, -100%, 0);
+}
+ 
+.scroll-up .trigger-menu-wrapper {
+	transform: none;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+}
+
+.pageTop {
+	transition: transform 0.4s;
+}
+
+.scroll-down .pageTop {
+	transform: translate3d(0, 100%, 0);
+}
+
+.scroll-up .pageTop {
+  	transform: none;
+  	box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+}
+
+
+
+
+
+
+
+
+
+
+

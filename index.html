@@ -1,9 +1,24 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="/js/snoowrap.min.js"></script>
     </head>
-    <body>
-        <input type="text" name="subreddit" id="subreddit" placeholder="SubReddit ie. StreetPhotography" class="input-subreddit">
+    <body id="top">
+
+    	<header class="page-header">
+		  <nav>
+		    <div class="trigger-menu-wrapper">
+		      <button class="trigger-menu">
+		        <input type="text" name="subreddit" id="subreddit" placeholder="SubReddit ie. StreetPhotography" class="input-subreddit">
+		      </button>
+		    </div>
+		  </nav>
+		</header>
+        
+        <div id="loading" class="loading">
+			<div class="loader"></div>
+		</div>
+
     </body>
     <script src="jquery.min.js"></script>
     <script src="main.js"></script>
