@@ -70,25 +70,29 @@ $( document ).ready(function() {
 	        }
 
 	        $.get("https://www.reddit.com/r/" + subreddit + "/hot.json?limit=100", function( reddit ) {
-				i = 0;
-				for (i = 0; i < reddit['data']['children'].length; i++) {
-					var div2 = document.createElement('div');
-		        	div2.setAttribute('id', "subredditInnerDiv");
-			        var img = document.createElement('img');
-					img.setAttribute('class', 'reddit-img');
-					img.setAttribute('onerror', 'this.style.display="none"');
-					img.setAttribute('alt', reddit['data']['children'][i]['data']['title']);
-					img.src = reddit['data']['children'][i]['data']['url'];
-					div2.appendChild(img);
-					div.appendChild(div2);
+				if (reddit) {
+					loader.style.display = 'none';
+					i = 0;
+					for (i = 0; i < reddit['data']['children'].length; i++) {
+						var div2 = document.createElement('div');
+			        	div2.setAttribute('id', "subredditInnerDiv");
+				        var img = document.createElement('img');
+						img.setAttribute('class', 'reddit-img');
+						img.setAttribute('onerror', 'this.style.display="none"');
+						img.setAttribute('alt', reddit['data']['children'][i]['data']['title']);
+						img.src = reddit['data']['children'][i]['data']['url'];
+						div2.appendChild(img);
+						div.appendChild(div2);
+					}
+					var pageTop = document.createElement('a');
+					pageTop.setAttribute('id', 'pageTop');
+				    pageTop.setAttribute('class', 'pageTop');
+				    pageTop.setAttribute('href', '#top');
+				    pageTop.innerText = "TOP";
+				    document.body.appendChild(pageTop);
+
+					oldSubReddit = subreddit;
 				}
-				var pageTop = document.createElement('a');
-				pageTop.setAttribute('id', 'pageTop');
-			    pageTop.setAttribute('class', 'pageTop');
-			    pageTop.setAttribute('href', '#top');
-			    pageTop.innerText = "TOP";
-			    document.body.appendChild(pageTop);
-				oldSubReddit = subreddit;
 		    });
 
 	        // Get Images
