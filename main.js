@@ -36,15 +36,15 @@ $( document ).ready(function() {
 		lastScroll = currentScroll;	
 	});
 	
-	const r = new snoowrap({
-	  userAgent: 'script',
-	  clientId: '',
-	  clientSecret: '',
-	  username: '',
-	  password: ''
-	});
+	// const r = new snoowrap({
+	//   userAgent: 'script',
+	//   clientId: '',
+	//   clientSecret: '',
+	//   username: '',
+	//   password: ''
+	// });
 
-	r.config({ proxies: false });
+	// r.config({ proxies: false });
 
 	var subreddit = "";
 
