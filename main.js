@@ -6,6 +6,12 @@ if ('scrollRestoration' in history) {
 // This is needed if the user scrolls down during page load and you want to make sure the page is scrolled to the top once it's fully loaded.Cross-browser supported.
 window.scrollTo(0,0);
 
+function scroll(speed) {
+    $('html, body').animate({ scrollTop: $(document).height() - $(window).height() }, speed, function() {
+        $(this).animate({ scrollTop: 0 }, speed);
+    });
+}
+
 $( document ).ready(function() {
 
 	// Sticky Header / Input
@@ -35,20 +41,12 @@ $( document ).ready(function() {
 		}
 		lastScroll = currentScroll;	
 	});
-	
-	// const r = new snoowrap({
-	//   userAgent: 'script',
-	//   clientId: '',
-	//   clientSecret: '',
-	//   username: '',
-	//   password: ''
-	// });
 
-	// r.config({ proxies: false });
+	let subreddit = "";
 
-	var subreddit = "";
+	let oldSubReddit = "";
 
-	var oldSubReddit = "";
+	let pageScroll = false;
 
 	loader = document.getElementById("loading");
 
@@ -69,7 +67,7 @@ $( document ).ready(function() {
 	        	document.getElementById('pageTop').remove();	
 	        }
 
-	        $.get("https://www.reddit.com/r/" + subreddit + "/hot.json?limit=100", function( reddit ) {
+	        $.get("https://www.reddit.com/r/" + subreddit + "/hot.json?limit=1000", function( reddit ) {
 				if (reddit) {
 					loader.style.display = 'none';
 					i = 0;
@@ -92,41 +90,20 @@ $( document ).ready(function() {
 				    document.body.appendChild(pageTop);
 
 					oldSubReddit = subreddit;
+
+					pageScroll = true;
+
+					if (pageScroll) {
+						scroll(speed)
+						setInterval(function(){scroll(speed)}, speed * 2);
+					}
+					
 				}
-		    });
+			});
+			
 
-	        // Get Images
-	  //       r.getSubreddit(subreddit).getTop({time: 'all'}).then(myListing => {
-			//     myListing.fetchMore({amount: 10}).then(extendedListing => {
-			//     	if (extendedListing) {
-			//     		loader = document.getElementById("loading");
-			//     		loader.style.display = "none";
+			
 
-			//     		allPics = extendedListing.map(submission => submission.url); 
-			// 	    	allTitles = extendedListing.map(submission => submission.title);
-			// 	    	allPics.forEach(function(url, index) {
-			// 		    	var div2 = document.createElement('div');
-			// 	        	div2.setAttribute('id', "subredditInnerDiv");
-			// 		        var img = document.createElement('img');
-			// 				img.setAttribute('class', 'reddit-img');
-			// 				img.setAttribute('onerror', 'this.style.display="none"');
-			// 				img.setAttribute('alt', allTitles[index]);
-			// 				img.setAttribute('title', allTitles[index]);
-			// 				img.src = url;
-			// 				div2.appendChild(img);
-			// 				div.appendChild(div2);
-			// 		    });
-
-			// 		    var pageTop = document.createElement('a');
-			// 		    pageTop.setAttribute('class', 'pageTop');
-			// 		    pageTop.setAttribute('href', '#top');
-			// 		    pageTop.innerText = "TOP";
-			// 		    document.body.appendChild(pageTop);
-			//     	}
-	  // 			})
-			// });
-	        
-		  	// oldSubReddit = subreddit;
 	    }
 	});
 });
