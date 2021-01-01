@@ -74,14 +74,26 @@ $( document ).ready(function() {
 					for (i = 0; i < reddit['data']['children'].length; i++) {
 						var div2 = document.createElement('div');
 			        	div2.setAttribute('id', "subredditInnerDiv");
-				        var img = document.createElement('img');
+						
+						var div3 = document.createElement('div');
+						div3.setAttribute('class', 'text-overlay');
+						
+						var h1 = document.createElement('h1');
+						h1.setAttribute('class', 'image-text-overlay');
+						h1.innerText = reddit['data']['children'][i]['data']['title'];
+
+						var img = document.createElement('img');
 						img.setAttribute('class', 'reddit-img');
 						img.setAttribute('onerror', 'this.style.display="none"');
 						img.setAttribute('alt', reddit['data']['children'][i]['data']['title']);
 						img.src = reddit['data']['children'][i]['data']['url'];
-						div2.appendChild(img);
+						
 						div.appendChild(div2);
+						div2.appendChild(img);
+						div2.appendChild(div3);
+						div3.appendChild(h1);
 					}
+
 					var pageTop = document.createElement('a');
 					pageTop.setAttribute('id', 'pageTop');
 				    pageTop.setAttribute('class', 'pageTop');
@@ -97,10 +109,5 @@ $( document ).ready(function() {
 			});
 		}
 	});
-
-	$(".reddit-img").hover(function() {
-		$(this).css("background-color", "#c1aeae");
-	});
-
 });
 

@@ -37,7 +37,6 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  
   -webkit-text-fill-color: black;
   transition: background-color 5000s ease-in-out 0s;
 }
@@ -45,6 +44,19 @@ select:-webkit-autofill:focus {
 #subredditInnerDiv {
 	margin: 1vw;
 	text-align: center;
+	position: relative;
+}
+.text-overlay {
+	position: absolute;
+    top: 50%;
+	width: 100%;
+	display: none;
+}
+.text-overlay:hover {
+	display: block;
+}
+.image-text-overlay {
+	font-family: Helvetica, sans-serif;
 }
 p.title {
 	top: -40px;
