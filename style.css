@@ -12,7 +12,9 @@ html, body {
 	/*opacity: 0.6;*/
 }
 .reddit-img:hover {
-	filter: saturate(1);
+	/* filter: saturate(1); */
+	/* background-color: #aa9f05; */
+	background-color: rgba(0,0,0,0.5);
 	/*opacity: 1;*/
 }
 .input-subreddit {

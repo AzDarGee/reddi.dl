@@ -67,7 +67,7 @@ $( document ).ready(function() {
 	        	document.getElementById('pageTop').remove();	
 	        }
 
-	        $.get("https://www.reddit.com/r/" + subreddit + "/hot.json?limit=1000", function( reddit ) {
+	        $.get("https://www.reddit.com/r/" + subreddit + "/hot.json?limit=10000", function( reddit ) {
 				if (reddit) {
 					loader.style.display = 'none';
 					i = 0;
@@ -92,18 +92,15 @@ $( document ).ready(function() {
 					oldSubReddit = subreddit;
 
 					pageScroll = true;
-
-					if (pageScroll) {
-						scroll(speed)
-						setInterval(function(){scroll(speed)}, speed * 2);
-					}
 					
 				}
 			});
-			
-
-			
-
-	    }
+		}
 	});
+
+	$(".reddit-img").hover(function() {
+		$(this).css("background-color", "#c1aeae");
+	});
+
 });
+
