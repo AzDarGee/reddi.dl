@@ -40,7 +40,6 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: black;
   transition: background-color 5000s ease-in-out 0s;
 }
-
 #subredditInnerDiv {
 	margin: 1vw;
 	text-align: center;
