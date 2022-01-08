@@ -67,7 +67,7 @@ $( document ).ready(function() {
 	        	document.getElementById('pageTop').remove();	
 	        }
 
-	        $.get("https://www.reddit.com/r/" + subreddit + "/hot.json?limit=10000", function( reddit ) {
+	        $.get("https://www.reddit.com/r/" + subreddit + "/new.json?limit=100", function( reddit ) {
 				if (reddit) {
 					loader.style.display = 'none';
 					i = 0;
